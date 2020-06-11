@@ -1,0 +1,69 @@
+<form
+  class="add-contact-form"
+  [formGroup]="formGroup"
+  (ngSubmit)="onSubmit(formGroup.value)"
+>
+  <mat-form-field floatLabel="never" class="form-element">
+    <input
+      type="text"
+      matInput
+      placeholder="First name"
+      formControlName="firstName"
+      [value]="firstName"
+    />
+    <mat-error *ngIf="formGroup.controls['firstName'].invalid">
+      {{ getError("firstName") }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="never" class="form-element">
+    <input
+      type="text"
+      matInput
+      placeholder="Last name"
+      formControlName="lastName"
+      [value]="lastName"
+    />
+    <mat-error *ngIf="formGroup.controls['lastName'].invalid">
+      {{ getError("lastName") }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="never" class="form-element">
+    <input
+      type="text"
+      matInput
+      placeholder="Phone number"
+      formControlName="phoneNumber"
+      [value]="phoneNumber"
+    />
+    <mat-error *ngIf="formGroup.controls['phoneNumber'].invalid">
+      {{ getError("phoneNumber") }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="never" class="form-element">
+    <input
+      type="email"
+      matInput
+      placeholder="Email"
+      formControlName="email"
+      [value]="email"
+    />
+    <mat-error *ngIf="formGroup.controls['email'].invalid">
+      {{ getError("email") }}
+    </mat-error>
+  </mat-form-field>
+
+  <div class="form-element">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      class="button"
+      [disabled]="!formGroup.valid"
+    >
+      Submit Form
+    </button>
+  </div>
+</form>

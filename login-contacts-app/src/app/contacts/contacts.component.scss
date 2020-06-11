@@ -1,0 +1,16 @@
+.table {
+  width: 500px;
+  margin: 0 auto;
+}
+
+th,
+td {
+  padding: 3px;
+  border: 1px solid black;
+}
+
+.add-button {
+  margin: 20px auto;
+  display: flex;
+  align-self: center;
+}

@@ -1,0 +1,47 @@
+<table class="table">
+  <tr>
+    <th>Id</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Phone Number</th>
+    <th>Email</th>
+    <th>Delete</th>
+    <th>Edit</th>
+  </tr>
+  <tr *ngFor="let user of userModel">
+    <td>{{ user.id }}</td>
+    <td>{{ user.firstName }}</td>
+    <td>{{ user.lastName }}</td>
+    <td>{{ user.phoneNumber }}</td>
+    <td>{{ user.email }}</td>
+    <td>
+      <button mat-raised-button color="warn" (click)="deleteEntry(user.id)">
+        Delete
+      </button>
+    </td>
+    <td>
+      <button mat-raised-button color="link" (click)="editEntry(user)">
+        Edit
+      </button>
+    </td>
+  </tr>
+</table>
+
+<button
+  mat-raised-button
+  color="primary"
+  (click)="changeAddContactDisplay(true)"
+  class="add-button"
+>
+  Add
+</button>
+
+<app-add-contact-form
+  *ngIf="isAddFormVisible"
+  [id]="id"
+  [firstName]="firstName"
+  [lastName]="lastName"
+  [phoneNumber]="phoneNumber"
+  [email]="email"
+  (newFormData)="addNewEntry($event)"
+></app-add-contact-form>

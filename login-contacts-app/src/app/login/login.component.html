@@ -1,0 +1,44 @@
+<form
+  class="login-form"
+  [formGroup]="formGroup"
+  (ngSubmit)="onSubmit(formGroup.value)"
+>
+  <mat-form-field floatLabel="never" class="form-element">
+    <input
+      type="email"
+      matInput
+      placeholder="Username"
+      formControlName="username"
+    />
+    <mat-error *ngIf="formGroup.controls['username'].invalid">
+      {{ getError("user") }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="never" class="form-element">
+    <input
+      type="password"
+      matInput
+      placeholder="Password"
+      formControlName="password"
+    />
+    <mat-error *ngIf="!formGroup.controls['password'].valid">
+      {{ getError("pass") }}
+    </mat-error>
+  </mat-form-field>
+  <mat-error *ngIf="!isValidLoginData">
+    {{ wrongCredentialsError }}
+  </mat-error>
+
+  <div class="form-element">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      class="button"
+      [disabled]="!formGroup.valid"
+    >
+      Submit Form
+    </button>
+  </div>
+</form>
